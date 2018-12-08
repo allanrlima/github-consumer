@@ -1,0 +1,39 @@
+{
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "rules": {
+    "semi": [2, "never"],
+    "import/extensions": ["always"],
+    "import/no-unresolved": ["always"],
+    "react/jsx-filename-extension": ["never"],
+    "import/prefer-default-export": ["never"],
+    "react/no-unused-prop-types": [1, "always"],
+    "max-len": ["error", { "code": 120 }],
+    "react/sort-comp": ["never"],
+    "linebreak-style": 0,
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": [ "navigateTo", "onPress" ]
+    }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.js",
+          "**/*.stories.js",
+          "storybook/*"
+        ]
+      }
+    ]
+  },
+  "env": {
+    "jest/globals": true,
+    "browser": true
+  },
+  "parser": "babel-eslint", 
+  "plugins": ["jest"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "legacyDecorators": true
+    }
+  }
+}
