@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 import ApolloClient from 'apollo-boost'
+import { ApolloProvider } from 'react-apollo'
 import logo from './logo.svg'
 import './App.css'
 
 const client = new ApolloClient({
-  uri: 'https://w5xlvm3vzz.lp.gql.zone/graphql',
+  uri: 'https://api.github.com/graphql',
 })
 
 class App extends Component {
   render() {
-    return <div className="App">Github consumer</div>
+    return (
+      <ApolloProvider client={client}>
+        <div className="App">Github consumer</div>
+      </ApolloProvider>
+    )
   }
 }
 
