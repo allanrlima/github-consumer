@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import './App.css'
-import Home from './containers/Home/index'
+import Repositories from './containers/Repositories/index'
+import { Commits } from './containers/Commits/index'
 
 const cache = new InMemoryCache()
 
@@ -25,11 +26,13 @@ const client = new ApolloClient({
 
 class App extends Component {
   render() {
-    console.log(client)
     return (
       <ApolloProvider client={client}>
         <Router>
-          <Route path="/" exact component={Home} />
+          <div>
+            <Route path="/" exact component={Repositories} />
+            <Route path="/commits/:name/:owner" exact component={Commits} />
+          </div>
         </Router>
       </ApolloProvider>
     )

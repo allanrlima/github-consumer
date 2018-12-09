@@ -1,15 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Button } from '../Button'
-
-const Container = styled.div`
-  padding: 16px;
-  border-bottom: 1px solid #cecece;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`
+import { Card } from '../../../../components/Card/index'
+import { Button } from '../../../../components/Button'
 
 const Title = styled.a`
   font-size: 20px;
@@ -31,8 +24,8 @@ const FooterText = styled.div`
   font-size: 14px;
 `
 
-export const Repository = ({ name, description, stars, forks }) => (
-  <Container>
+export const Repository = ({ name, description, stars, forks, onClickButton }) => (
+  <Card>
     <div>
       <Title>{name}</Title>
       <Description>{description}</Description>
@@ -42,9 +35,9 @@ export const Repository = ({ name, description, stars, forks }) => (
       </Footer>
     </div>
     <div>
-      <Button title="Show commits" />
+      <Button title="Show commits" onClick={onClickButton} />
     </div>
-  </Container>
+  </Card>
 )
 
 Repository.propTypes = {

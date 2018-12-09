@@ -44,6 +44,8 @@ const ButtonComponent = styled.button`
   }
 `
 
-export const Button = ({ title, backgroundColor }) => (
-  <ButtonComponent backgroundColor={backgroundColor}>{title}</ButtonComponent>
+export const Button = ({ onClick, title, backgroundColor }) => (
+  <ButtonComponent backgroundColor={backgroundColor} onClick={onClick}>
+    {title}
+  </ButtonComponent>
 )

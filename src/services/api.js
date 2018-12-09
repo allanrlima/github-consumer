@@ -19,3 +19,34 @@ export const GET_REPOSITORIES = gql`
     }
   }
 `
+
+export const GET_COMMITS_FROM_REPOSITORY = gql`
+  query getCommitsFromRepository($name: String!, $owner: String!) {
+    repository(name: $name, owner: $owner) {
+      ref(qualifiedName: "master") {
+        target {
+          ... on Commit {
+            id
+            history(first: 10) {
+              pageInfo {
+                hasNextPage
+              }
+              edges {
+                node {
+                  messageHeadline
+                  oid
+                  message
+                  author {
+                    name
+                    email
+                    date
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
