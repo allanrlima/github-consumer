@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 const ButtonComponent = styled.button`
   position: relative;
+  width: 100%;
   display: block;
   margin: 30px auto;
   padding: 0;
