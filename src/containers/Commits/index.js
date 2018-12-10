@@ -8,14 +8,7 @@ import { Container } from '../../components/Container'
 import { Input } from '../../components/Input/index'
 import { Commit } from './components/Commit'
 import { Button } from '../../components/Button/index'
-
-const Header = styled.div`
-  padding-top: 16px;
-  padding-bottom: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`
+import { Header } from '../../components/Header/index'
 
 export class Commits extends React.Component {
   state = {

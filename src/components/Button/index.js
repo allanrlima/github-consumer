@@ -4,7 +4,9 @@ import styled from 'styled-components'
 
 const ButtonComponent = styled.button`
   position: relative;
+  background-color: #fff;
   width: 100%;
+  min-width: 160px;
   display: block;
   padding: 0;
   overflow: hidden;
