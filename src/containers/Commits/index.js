@@ -9,6 +9,16 @@ import { Input } from '../../components/Input/index'
 import { Commit } from './components/Commit'
 import { Button } from '../../components/Button/index'
 import { Header } from '../../components/Header/index'
+import { device } from '../../services/styles'
+
+const ButtonWrapper = styled.div`
+  padding-top: 8px;
+  width: 100%;
+  ${device.desktop`
+    max-width: 200px;
+    justify-content: space-between;
+  `}
+`
 
 export class Commits extends React.Component {
   state = {
@@ -16,7 +26,7 @@ export class Commits extends React.Component {
   }
 
   static propTypes = {
-    history: PropTypes.func.isRequired,
+    history: PropTypes.PropTypes.objectOf(PropTypes.shape).isRequired,
     match: PropTypes.PropTypes.objectOf(PropTypes.shape).isRequired,
   }
 
@@ -72,14 +82,14 @@ export class Commits extends React.Component {
                   Search:
                   <Input onChange={this.handleChange} />
                 </div>
-                <div>
+                <ButtonWrapper>
                   <Button title="Back to repositories" onClick={this.goToRepositoriesPage} />
-                </div>
+                </ButtonWrapper>
               </Header>
               {this.checkSearchCommits(commits).map(commit => {
                 const { node } = commit
                 const { author } = node
-                return <Commit title={node.messageHeadline} name={author.name} />
+                return <Commit key={node.oid} title={node.messageHeadline} name={author.name} />
               })}
             </Container>
           )

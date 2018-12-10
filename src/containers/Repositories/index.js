@@ -28,10 +28,12 @@ export class Repositories extends React.Component {
     const { loading } = getAllRespositories
     return (
       <Container>
+        <h1>Repositories by reactjs organization</h1>
         {loading && <div>loading...</div>}
         {!loading &&
           repositories.map(repository => (
             <Repository
+              key={repository.name}
               name={repository.name}
               description={repository.description}
               stars={repository.stargazers.totalCount}

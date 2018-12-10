@@ -7,6 +7,9 @@ const ContainerDiv = styled.div`
   margin-right: auto;
   display: flex;
   flex-direction: column;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 32px;
   ${device.desktop`
     width: 980px;
   `}

@@ -18,6 +18,7 @@ const Container = styled.div`
   min-width: 275px;
   margin-top: 16px;
   background-color: #fff;
+  box-sizing: border-box;
 `
 
 export const Card = ({ children }) => <Container>{children}</Container>
