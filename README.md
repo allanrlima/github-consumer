@@ -2,6 +2,12 @@
 
 This repository is simple web-app, to connect with GitHub Graphql API, showing a page with all repositories of a specific login, then when clicking in on of this repositories show all commits of the same
 
+## How to run
+
+Before run available scripts below, if mandatory create a `.env` file in the root of this project with a key REACT_APP_GITHUB_ACCESS_TOKEN="xxx" and replace `xxx` for your Github access token. Because of safety issues of Github Graphql API
+
+to generate your own access token, follow this tutorial: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
+
 ## Available Scripts
 
 In the project directory, you can run:
