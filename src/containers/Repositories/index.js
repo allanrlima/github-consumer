@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import get from 'lodash/get'
-import { graphql, compose } from 'react-apollo'
+import { Query } from 'react-apollo'
 import { GET_REPOSITORIES } from '../../services/api'
 import { Repository } from './components/Repository'
 import { Container } from '../../components/Container'
@@ -24,36 +24,32 @@ export class Repositories extends React.Component {
 
   render() {
     const { getAllRespositories } = this.props
-    const repositories = get(getAllRespositories, 'repositoryOwner.repositories.nodes', [])
-    const { loading } = getAllRespositories
+    const variables = {
+      login: 'reactjs',
+      first: 10,
+    }
     return (
-      <Container>
-        <h1>Repositories by reactjs organization</h1>
-        {loading && <div>loading...</div>}
-        {!loading &&
-          repositories.map(repository => (
-            <Repository
-              key={repository.name}
-              name={repository.name}
-              description={repository.description}
-              stars={repository.stargazers.totalCount}
-              forks={repository.forks.totalCount}
-              onClickButton={() => this.showCommits(repository.name)}
-            />
-          ))}
-      </Container>
+      <Query query={GET_REPOSITORIES} variables={variables}>
+        {({ loading, data }) => {
+          if (loading) return <div>carregando...</div>
+          const repositories = get(data, 'repositoryOwner.repositories.nodes', [])
+          return (
+            <Container>
+              <h1>Repositories by reactjs organization</h1>
+              {repositories.map(repository => (
+                <Repository
+                  key={repository.name}
+                  name={repository.name}
+                  description={repository.description}
+                  stars={repository.stargazers.totalCount}
+                  forks={repository.forks.totalCount}
+                  onClickButton={() => this.showCommits(repository.name)}
+                />
+              ))}
+            </Container>
+          )
+        }}
+      </Query>
     )
   }
 }
-
-export default compose(
-  graphql(GET_REPOSITORIES, {
-    name: 'getAllRespositories',
-    options: ({ login, first }) => ({
-      variables: {
-        login: 'reactjs' || login,
-        first: 10 || first,
-      },
-    }),
-  })
-)(Repositories)
