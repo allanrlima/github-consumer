@@ -12,7 +12,6 @@ export class Repositories extends React.Component {
   }
 
   static propTypes = {
-    getAllRespositories: PropTypes.objectOf(PropTypes.shape).isRequired,
     history: PropTypes.objectOf(PropTypes.shape).isRequired,
   }
 
@@ -23,7 +22,6 @@ export class Repositories extends React.Component {
   }
 
   render() {
-    const { getAllRespositories } = this.props
     const variables = {
       login: 'reactjs',
       first: 10,
