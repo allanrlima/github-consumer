@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+
+This repository is simple web-app, to connect with GitHub Graphql API, showing a page with all repositories of a specific login, then when clicking in on of this repositories show all commits of the same
 
 ## Available Scripts
 
