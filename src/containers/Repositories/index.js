@@ -11,6 +11,11 @@ export class Repositories extends React.Component {
     login: 'reactjs',
   }
 
+  static propTypes = {
+    getAllRespositories: PropTypes.objectOf(PropTypes.shape).isRequired,
+    history: PropTypes.objectOf(PropTypes.shape).isRequired,
+  }
+
   showCommits = repository => {
     const { history } = this.props
     const { login } = this.state
@@ -37,11 +42,6 @@ export class Repositories extends React.Component {
       </Container>
     )
   }
-}
-
-Repositories.propTypes = {
-  getAllRespositories: PropTypes.objectOf(PropTypes.shape).isRequired,
-  history: PropTypes.objectOf(PropTypes.shape).isRequired,
 }
 
 export default compose(

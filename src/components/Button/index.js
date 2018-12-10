@@ -1,18 +1,18 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const ButtonComponent = styled.button`
   position: relative;
   width: 100%;
   display: block;
-  margin: 30px auto;
   padding: 0;
   overflow: hidden;
   border-width: 0;
   outline: none;
   border-radius: 2px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#FFF')};
+  background-color: '#FFF';
   color: 000;
   transition: background-color 0.3s;
   padding: 12px 24px;
@@ -45,8 +45,9 @@ const ButtonComponent = styled.button`
   }
 `
 
-export const Button = ({ onClick, title, backgroundColor }) => (
-  <ButtonComponent backgroundColor={backgroundColor} onClick={onClick}>
-    {title}
-  </ButtonComponent>
-)
+export const Button = ({ onClick, title }) => <ButtonComponent onClick={onClick}>{title}</ButtonComponent>
+
+Button.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+}

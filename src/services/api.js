@@ -21,13 +21,13 @@ export const GET_REPOSITORIES = gql`
 `
 
 export const GET_COMMITS_FROM_REPOSITORY = gql`
-  query getCommitsFromRepository($name: String!, $owner: String!) {
+  query getCommitsFromRepository($name: String!, $owner: String!, $first: Int!) {
     repository(name: $name, owner: $owner) {
       ref(qualifiedName: "master") {
         target {
           ... on Commit {
             id
-            history(first: 10) {
+            history(first: $first) {
               pageInfo {
                 hasNextPage
               }
